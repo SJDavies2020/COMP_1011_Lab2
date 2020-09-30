@@ -12,6 +12,10 @@ private LocalDate releaseDate;
 private String gameType;
 private double gamePrice;
 
+// Revision Block
+// Date--------------------By-----------------------Reason----------------
+// 9/29/2020        Steven Davies               First Version
+
 public gameModel(String gameName, String publishYear, boolean isPublished, LocalDate releaseDate, String gameType, double gamePrice) {
     setGameName(gameName);
     setPublishYear(publishYear);
@@ -36,14 +40,13 @@ public gameModel(String gameName, String publishYear, boolean isPublished, Local
              this.GameName = gameName;
         }
     }
+
+    // Getters and Setters for the Variables
+
     public String getPublishYear() {
         return PublishYear;
     }
 
-    /**
-     * This sets the Game publish Year
-     * @param publishYear
-     */
     public void setPublishYear(String publishYear) {
         try
         {
@@ -107,7 +110,7 @@ public gameModel(String gameName, String publishYear, boolean isPublished, Local
             this.gamePrice = gamePrice;
         } else
             {
-                throw new IllegalArgumentException("Game price shoud bw a positive value between 0 and 100");
+                throw new IllegalArgumentException("Game price should be a positive value between 0 and 100");
             }
     }
     public static boolean isNumeric(String str) {

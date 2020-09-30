@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+// Revision Block
+// Date--------------------By-----------------------Reason----------------
+// 9/29/2020        Steven Davies               First Version
+
 public class gameController implements Initializable {
 
     // Get the Stage Control References
@@ -58,7 +62,12 @@ public class gameController implements Initializable {
 
     public void createButtonPushed()
     {
+                    // Validation Section -----------------------------------------------------------------------------
                     // Param 1
+                    /**
+                     * Validate the input for the entered item, game name must be entered
+                     * @param txtgameName
+                     */
                     if (txtgameName.getText().isEmpty())
                     {
                         lblWarningTxt.setText("You need to enter the name of the Game!");
@@ -68,6 +77,10 @@ public class gameController implements Initializable {
                            String theGameName = txtgameName.getText();
                         }
                     // Param 2
+                    /**
+                     * Validate the input for the entered item, publish year must be entered
+                     * @param cmbPublishYear
+                     */
                     if (cmbPublishYear.getSelectionModel().isEmpty())
                     {
                         lblWarningTxt.setText("You need to pick a year!");
@@ -78,7 +91,10 @@ public class gameController implements Initializable {
                     }
 
                     // Param 3
-
+                    /**
+                     * Validate the input for the entered item, isPublished must be entered
+                     * @param cmbIsPublished
+                     */
                     if (cmbIsPublished.getSelectionModel().isEmpty())
                     {
                         lblWarningTxt.setText("Please select if the Game is Published or Not");
@@ -90,7 +106,10 @@ public class gameController implements Initializable {
                     }
 
                     // Param 4
-
+                    /**
+                     * Validate the input for the entered item, ReleaseDate must be entered
+                     * @param dateReleaseDate
+                     */
                     if (dateReleaseDate.getValue() == null)
                     {
                         lblWarningTxt.setText("You need to pick a Release Date");
@@ -101,6 +120,10 @@ public class gameController implements Initializable {
                     }
 
                     // Param 5
+                    /**
+                     * Validate the input for the entered item, GameType must be entered
+                     * @param cmbGameType
+                     */
                     if (cmbGameType.getSelectionModel().isEmpty())
                     {
                         lblWarningTxt.setText("You need to pick a Game Type");
@@ -110,6 +133,10 @@ public class gameController implements Initializable {
                         String theGameType = cmbGameType.getValue();
                     }
                     // Param 6
+                    /**
+                     * Validate the input for the entered item, txtGamePrice must be entered
+                     * @param txtGamePrice
+                     */
                     if (txtGamePrice.getText().isEmpty())
                     {
                         try {
@@ -124,9 +151,12 @@ public class gameController implements Initializable {
                         NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CANADA);
                         double thePrice = Double.parseDouble(txtGamePrice.getText());
                     }
-
-                    // If Tests are passed set the variables
-                    String theGameName = txtgameName.getText();
+                    // End Validation Section -----------------------------------------------------------------------------
+                    /**
+                     * Set the variables now that validation has passed.
+                     * @param theGameName, thePublishYear, userChoice, isPublished, localReleaseDate, theGameType, thePrice
+                     */
+                      String theGameName = txtgameName.getText();
                     String thePublishYear = cmbPublishYear.getValue();
                     String userChoice = cmbIsPublished.getSelectionModel().getSelectedItem();
                     boolean isPublished = Boolean.valueOf(userChoice);
@@ -138,7 +168,6 @@ public class gameController implements Initializable {
                     gameModel gameModel1 = new gameModel(theGameName,thePublishYear,isPublished, localReleaseDate ,theGameType,thePrice);
 
                     // Create the Ad Description
-
                     String TempText =  "There is a game called " + gameModel1.getGameName();
                     if (gameModel1.isPublished())
                     {
@@ -151,7 +180,7 @@ public class gameController implements Initializable {
                     TempText += " and it is a " + gameModel1.getGameType() + " Type of Game. ";
                     TempText += " The Game is priced at " + gameModel1.getGamePrice() + ".";
 
-                    // Set the Text Area Text
+                    // Set the Text Area Text to the combined string
                     txtDescription.setText(TempText);
                 }
     }
